@@ -6,3 +6,4 @@ out
 .gradle
 gradle
 /classes
+/src/main/resources/static/components
