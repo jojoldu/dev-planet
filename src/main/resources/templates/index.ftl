@@ -9,14 +9,14 @@
     <title>Dev Planet</title>
 
     <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" href="/static/components/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/static/ace/css/font-awesome.css" />
+    <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/ace/font-awesome.css" />
 
     <!-- text fonts -->
-    <link rel="stylesheet" href="/static/ace/css/ace-fonts.css" />
+    <link rel="stylesheet" href="/css/ace/ace-fonts.css" />
 
     <!-- ace styles -->
-    <link rel="stylesheet" href="/static/ace/css/ace.css" />
+    <link rel="stylesheet" href="/css/ace/ace.css" />
 
 </head>
 
@@ -46,7 +46,7 @@
 
                                     <div class="social-login center">
                                         <a class="btn btn-info">
-                                            <img src="/img/icon/GitHub-Mark-32px.png">
+                                            <img src="/img/GitHub-Mark-32px.png">
                                         </a>
                                     </div>
                                 </div><!-- /.widget-main -->
