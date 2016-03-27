@@ -45,7 +45,7 @@
                                     <div class="space-6"></div>
 
                                     <div class="social-login center">
-                                        <a class="btn btn-info">
+                                        <a href="https://github.com/login/oauth/authorize?client_id=917614cfb633b397de81&redirect_uri=http://localhost:8080/oauth/auth&scope=user,repo" class="btn btn-info">
                                             <img src="/img/GitHub-Mark-32px.png">
                                         </a>
                                     </div>
