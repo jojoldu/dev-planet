@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Configuration;
 /**
  * Created by jojoldu@gmail.com on 2016-03-08.
  */
-@Configuration
 @EnableAutoConfiguration(exclude={SecurityAutoConfiguration.class})
 @ComponentScan
 public class Application {
