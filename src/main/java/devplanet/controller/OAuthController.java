@@ -17,7 +17,7 @@ public class OauthController {
 
     @RequestMapping("/auth")
     public String auth(Model model, String code){
-        oauthService.getAuth(code);
+        model.addAttribute("user", oauthService.getAuth(code));
         return "main";
     }
 

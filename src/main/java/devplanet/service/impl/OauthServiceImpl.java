@@ -34,7 +34,7 @@ public class OauthServiceImpl implements OauthService {
     @Autowired private ObjectMapper objectMapper;
     @Autowired private UserRepository userRepository;
 
-    public void getAuth(String code){
+    public User getAuth(String code){
         String requestUrl = Constants.URL_GET_ACCESS_TOKEN
                 + "?client_id=" + clientId
                 + "&client_secret=" + clientSecret
@@ -50,20 +50,39 @@ public class OauthServiceImpl implements OauthService {
                 //return null;
             }
 
-            Map<String, String> githubUser = restTemplate.getForObject(Constants.URL_GET_USER_INFO+accessToken, Map.class);
+            User user = this.getGithubUser(accessToken);
+            user.setRepositories(this.getGithubRepos(accessToken, user.getId()));
+            userRepository.save(user);
+            return user;
+        }catch(Exception e){
+            logger.error("github oauth rest error", e);
+        }
+        return null;
+    }
 
-            List<Map<String, Object>> githubRepos = restTemplate.getForObject(Constants.URL_GET_REPOS.replace(":id", githubUser.get(Constants.GITHUB_USER_NAME))+accessToken, List.class);
+    private User getGithubUser(String accessToken){
+        try{
+            Map<String, String> githubUser = restTemplate.getForObject(Constants.URL_GET_USER_INFO+accessToken, Map.class);
+            return new User(githubUser.get(Constants.GITHUB_USER_NAME), githubUser.get(Constants.GITHUB_USER_EMAIL));
+        }catch(Exception e){
+            logger.error("get github user exception", e);
+        }
+        return null;
+    }
+
+    private List<Repository> getGithubRepos(String accessToken, String id){
+        try{
+            List<Map<String, Object>> githubRepos = restTemplate.getForObject(Constants.URL_GET_REPOS.replace(":id", id)+accessToken, List.class);
             List<Repository> repos = new ArrayList<>();
             for(Map<String, Object> m : githubRepos){
                 repos.add(new Repository((Integer)m.get("id"), (String)m.get("name"), (String)m.get("hooks_url")));
             }
-            userRepository.save(new User(githubUser.get(Constants.GITHUB_USER_NAME), githubUser.get(Constants.GITHUB_USER_EMAIL), repos));
-
+            return repos;
         }catch(Exception e){
-            logger.error("github oauth rest error", e);
+            logger.error("get github repos exception", e);
         }
+        return null;
     }
-
 }
 
 

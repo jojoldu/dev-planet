@@ -28,10 +28,8 @@
                 <div class="login-container">
                     <div class="center">
                         <h1>
-                            <i class="ace-icon fa fa-leaf green"></i>
                             <span class="grey" id="id-text2">Dev Planet</span>
                         </h1>
-                        <h4 class="blue" id="id-company-text">&copy; jojoldu@gmail.com</h4>
                     </div>
 
                     <div class="space-6"></div>
@@ -49,6 +47,7 @@
                                             <img src="/img/GitHub-Mark-32px.png">
                                         </a>
                                     </div>
+                                    <h4 class="blue" id="id-company-text">&copy; jojoldu@gmail.com</h4>
                                 </div><!-- /.widget-main -->
                             </div><!-- /.widget-body -->
                         </div><!-- /.login-box -->
