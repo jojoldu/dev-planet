@@ -9,7 +9,13 @@ spring:
     username: sa
     password:
     sql-script-encoding: UTF-8
+  redis:
+    port: 6379
+    host: localhost
+    password: secret
+
 
 client:
   id: 917614cfb633b397de81
   secret: c69ab2f4c6494be57d28ecb89bb4ce364ce7f29a
+
