@@ -14,9 +14,9 @@ import java.util.Map;
 public class HomeController {
 
     @RequestMapping("/")
-    public String home(Map<String, Object> model){
+    public String main(Map<String, Object> model){
         model.put("time", new Date());
         model.put("message", "hello");
-        return "index";
+        return "main";
     }
 }

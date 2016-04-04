@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class OauthServiceImpl implements OauthService {
     @Autowired private ObjectMapper objectMapper;
     @Autowired private UserRepository userRepository;
 
+    @Transactional
     public User getAuth(String code){
         String requestUrl = Constants.URL_GET_ACCESS_TOKEN
                 + "?client_id=" + clientId
@@ -47,7 +49,7 @@ public class OauthServiceImpl implements OauthService {
 
             if(StringUtils.isEmpty(accessToken)){
                 logger.info("access token empty");
-                //return null;
+                return null;
             }
 
             User user = this.getGithubUser(accessToken);

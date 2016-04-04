@@ -7,16 +7,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Created by jojoldu@gmail.com on 2016-03-10.
+ * Created by jojoldu@zuminternet.com on 2016-04-04.
  */
-@RequestMapping("/oauth")
+@RequestMapping("/login")
 @Controller
-public class OauthController {
+public class LoginController {
 
-    @Autowired private OauthService oauthService;
+    @Autowired
+    private OauthService oauthService;
 
-    @RequestMapping("/auth")
-    public String auth(Model model, String code){
+    @RequestMapping("/")
+    public String login(){
+        return "login";
+    }
+
+    @RequestMapping("/oauth")
+    public String oauth(Model model, String code){
         model.addAttribute("user", oauthService.getAuth(code));
         return "main";
     }

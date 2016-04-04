@@ -43,15 +43,15 @@
                                     <div class="space-6"></div>
 
                                     <div class="social-login center">
-                                        <a href="https://github.com/login/oauth/authorize?client_id=917614cfb633b397de81&redirect_uri=http://localhost:8080/oauth/auth&scope=user,repo" class="btn btn-info">
+                                        <a href="https://github.com/login/oauth/authorize?client_id=917614cfb633b397de81&redirect_uri=http://localhost:8080/login/oauth?scope=user,repo" class="btn btn-info">
                                             <img src="/img/GitHub-Mark-32px.png">
                                         </a>
                                     </div>
-                                    <h4 class="blue" id="id-company-text">&copy; jojoldu@gmail.com</h4>
                                 </div><!-- /.widget-main -->
                             </div><!-- /.widget-body -->
                         </div><!-- /.login-box -->
                     </div><!-- /.position-relative -->
+                    <h4 class="blue" id="id-company-text">&copy; jojoldu@gmail.com</h4>
                 </div>
             </div><!-- /.col -->
         </div><!-- /.row -->
