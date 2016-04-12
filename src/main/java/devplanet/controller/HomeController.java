@@ -17,6 +17,6 @@ public class HomeController {
     public String main(Map<String, Object> model){
         model.put("time", new Date());
         model.put("message", "hello");
-        return "main";
+        return "login";
     }
 }

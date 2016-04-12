@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +37,7 @@ public class OauthServiceImpl implements OauthService {
     @Autowired private UserRepository userRepository;
 
     @Transactional
-    public User getAuth(String code){
+    public User getAuth(HttpSession session, String code){
         String requestUrl = Constants.URL_GET_ACCESS_TOKEN
                 + "?client_id=" + clientId
                 + "&client_secret=" + clientSecret
@@ -53,6 +54,7 @@ public class OauthServiceImpl implements OauthService {
             }
 
             User user = this.getGithubUser(accessToken);
+            session.setAttribute("user",user.getId());
             user.setRepositories(this.getGithubRepos(accessToken, user.getId()));
             userRepository.save(user);
             return user;
