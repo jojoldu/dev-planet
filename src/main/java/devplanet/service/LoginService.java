@@ -7,6 +7,6 @@ import javax.servlet.http.HttpSession;
 /**
  * Created by jojoldu on 2016-03-27.
  */
-public interface OauthService {
+public interface LoginService {
     User getAuth(HttpSession session, String code);
 }

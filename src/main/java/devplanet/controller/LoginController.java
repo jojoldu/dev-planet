@@ -1,6 +1,6 @@
 package devplanet.controller;
 
-import devplanet.service.OauthService;
+import devplanet.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
 
     @Autowired
-    private OauthService oauthService;
+    private LoginService oauthService;
 
     @RequestMapping("/oauth")
     public String oauth(HttpSession session, Model model, String code){

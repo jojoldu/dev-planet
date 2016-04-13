@@ -3,8 +3,8 @@ package devplanet.service.impl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import devplanet.model.Repository;
 import devplanet.model.User;
-import devplanet.repository.UserRepository;
-import devplanet.service.OauthService;
+import devplanet.dao.UserDao;
+import devplanet.service.LoginService;
 import devplanet.util.Constants;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -25,16 +25,16 @@ import java.util.Map;
  */
 
 @Service
-public class OauthServiceImpl implements OauthService {
+public class LoginServiceImpl implements LoginService {
 
-    private Logger logger = LoggerFactory.getLogger(OauthServiceImpl.class);
+    private Logger logger = LoggerFactory.getLogger(LoginServiceImpl.class);
 
     @Value("${client.id}") private String clientId;
     @Value("${client.secret}") private String clientSecret;
 
     @Autowired private RestTemplate restTemplate;
     @Autowired private ObjectMapper objectMapper;
-    @Autowired private UserRepository userRepository;
+    @Autowired private UserDao userDao;
 
     @Transactional
     public User getAuth(HttpSession session, String code){
@@ -54,9 +54,10 @@ public class OauthServiceImpl implements OauthService {
             }
 
             User user = this.getGithubUser(accessToken);
-            session.setAttribute("user",user.getId());
-            user.setRepositories(this.getGithubRepos(accessToken, user.getId()));
-            userRepository.save(user);
+            //user.setRepositories(this.getGithubRepos(accessToken, user.getId()));
+            session.setAttribute("id",user.getId());
+            session.setAttribute("accessToken", accessToken);
+            userDao.save(user);
             return user;
         }catch(Exception e){
             logger.error("github oauth rest error", e);

@@ -12,7 +12,8 @@ import redis.embedded.RedisServer;
 /**
  * Created by jojoldu@gmail.com on 2016-03-08.
  */
-@SpringBootApplication(exclude={SecurityAutoConfiguration.class})
+//@SpringBootApplication(exclude={SecurityAutoConfiguration.class})
+@SpringBootApplication
 public class Application {
 
     public static void main(String[] args){

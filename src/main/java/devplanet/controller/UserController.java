@@ -15,6 +15,6 @@ public class UserController {
 
     @RequestMapping("/{userName}")
     public String getUser(@PathVariable String userName, Model model){
-        return "user.ftl";
+        return "user";
     }
 }
