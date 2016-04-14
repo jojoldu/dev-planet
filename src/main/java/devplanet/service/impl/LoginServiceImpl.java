@@ -1,6 +1,5 @@
 package devplanet.service.impl;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import devplanet.model.Repository;
 import devplanet.model.User;
 import devplanet.dao.UserDao;
@@ -29,11 +28,10 @@ public class LoginServiceImpl implements LoginService {
 
     private Logger logger = LoggerFactory.getLogger(LoginServiceImpl.class);
 
-    @Value("${client.id}") private String clientId;
-    @Value("${client.secret}") private String clientSecret;
+    @Value("${github.client.clientId}") private String clientId;
+    @Value("${github.client.clientSecret}") private String clientSecret;
 
     @Autowired private RestTemplate restTemplate;
-    @Autowired private ObjectMapper objectMapper;
     @Autowired private UserDao userDao;
 
     @Transactional

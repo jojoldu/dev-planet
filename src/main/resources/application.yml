@@ -14,7 +14,16 @@ spring:
     host: 127.0.0.1
     password: secret
 
-client:
-  id: 917614cfb633b397de81
-  secret: c69ab2f4c6494be57d28ecb89bb4ce364ce7f29a
+security:
+  oauth2:
+    client:
+      clientId: 917614cfb633b397de81
+      clientSecret: c69ab2f4c6494be57d28ecb89bb4ce364ce7f29a
+      accessTokenUri: https://github.com/login/oauth/access_token
+      userAuthorizationUri: https://github.com/login/oauth/authorize
+      tokenName: oauth_token
+      clientAuthenticationScheme: form
+      scope: user,repo
+    resource:
+      userInfoUri: https://api.github.com/user
 

@@ -25,6 +25,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();
         resolver.setContentType("text/html;charset=utf-8");
         resolver.setSuffix(".ftl");
+        resolver.setCache(false);
         return resolver;
     }
 
@@ -39,13 +40,13 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return freemarkerConfig;
     }
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
-    }
-
     @Bean
     public HttpSessionStrategy httpSessionStrategy() {
         return new HeaderHttpSessionStrategy();
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
     }
 }

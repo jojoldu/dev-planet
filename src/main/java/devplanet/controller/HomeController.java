@@ -14,11 +14,14 @@ import java.util.Map;
 public class HomeController {
 
     @RequestMapping("/")
-    public String main(Map<String, Object> model){
-        model.put("time", new Date());
-        model.put("message", "hello");
+    public String main(Model model){
+        model.addAttribute("time", new Date());
+        model.addAttribute("message", "hello");
         return "index";
     }
 
-
+    @RequestMapping("/rank")
+    public String rank(){
+        return "rank";
+    }
 }

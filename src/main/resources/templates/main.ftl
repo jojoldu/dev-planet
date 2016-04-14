@@ -37,7 +37,6 @@
         <div class="navbar-header pull-left">
             <a href="#" class="navbar-brand">
                 <small>
-                    <i class="fa fa-leaf"></i>
                     Dev Planet
                 </small>
             </a>
