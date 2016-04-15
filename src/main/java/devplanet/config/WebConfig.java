@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.session.web.http.HeaderHttpSessionStrategy;
 import org.springframework.session.web.http.HttpSessionStrategy;
+import org.springframework.web.context.request.RequestContextListener;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -43,6 +44,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public HttpSessionStrategy httpSessionStrategy() {
         return new HeaderHttpSessionStrategy();
+    }
+
+    @Bean
+    public RequestContextListener requestContextListener(){
+        return new RequestContextListener();
     }
 
     @Override

@@ -4,6 +4,7 @@ import devplanet.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
@@ -25,8 +26,9 @@ public class LoginController {
 //        return "redirect:/user/"+user.getId();
 //    }
 
-    @RequestMapping("/oauth")
-    public String oauth(Principal user){
-        return "redirect:/user/jojoldu";
+    @RequestMapping("/user")
+    public String oauth(Principal user, Model model){
+        model.addAttribute("name", user.getName());
+        return "user";
     }
 }

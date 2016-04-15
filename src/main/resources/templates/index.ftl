@@ -46,7 +46,7 @@
                                         <a href="https://github.com/login/oauth/authorize?client_id=917614cfb633b397de81&redirect_uri=http://localhost:8080/login/oauth?scope=user,repo" class="btn btn-info">
                                             <img src="/img/GitHub-Mark-32px.png">
                                         </a>
-                                        <a href = "/login/oauth">고고</a>
+                                        <a href = "/login/github">고고</a>
                                     </div>
                                 </div><!-- /.widget-main -->
                             </div><!-- /.widget-body -->
