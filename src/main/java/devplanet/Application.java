@@ -15,7 +15,6 @@ import redis.embedded.RedisServer;
  * Created by jojoldu@gmail.com on 2016-03-08.
  */
 @SpringBootApplication
-@EnableOAuth2Client
 public class Application {
 
     public static void main(String[] args){
