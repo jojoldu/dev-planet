@@ -19,6 +19,4 @@ public class HomeController {
         model.put("message", "hello");
         return "index";
     }
-
-
 }
