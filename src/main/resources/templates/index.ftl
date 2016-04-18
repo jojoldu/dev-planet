@@ -46,6 +46,15 @@
                                         <a href="https://github.com/login/oauth/authorize?client_id=917614cfb633b397de81&redirect_uri=http://localhost:8080/login/oauth?scope=user,repo" class="btn btn-info">
                                             <img src="/img/GitHub-Mark-32px.png">
                                         </a>
+                                        <form action="/login/github" method="POST">
+                                            <input type="hidden" name="_csrf" value="${_csrf.token}">
+                                            <div class="formInfo">
+                                                <p>You aren't connected to Facebook yet. Click the button to connect this application with your Facebook account.</p>
+                                            </div>
+                                            <p>
+                                                <button type="submit">Connect to Github</button>
+                                            </p>
+                                        </form>
                                     </div>
                                 </div><!-- /.widget-main -->
                             </div><!-- /.widget-body -->

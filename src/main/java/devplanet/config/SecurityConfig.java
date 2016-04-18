@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .authorizeRequests()
                     .antMatchers("/", "/login**", "/components/**", "/css/**", "/js/**", "/img/**").permitAll()
-                    .anyRequest().authenticated();
+                    .anyRequest().permitAll();
     }
 
     @Override
