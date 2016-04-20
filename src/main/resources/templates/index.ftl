@@ -46,6 +46,7 @@
                                         <a href="https://github.com/login/oauth/authorize?client_id=917614cfb633b397de81&redirect_uri=http://localhost:8080/login/oauth?scope=user,repo" class="btn btn-info">
                                             <img src="/img/GitHub-Mark-32px.png">
                                         </a>
+                                        <a ng-show="!home.authenticated" href="/login" class="btn btn-info"> Github </a>
                                     </div>
                                 </div><!-- /.widget-main -->
                             </div><!-- /.widget-body -->
@@ -58,6 +59,18 @@
     </div><!-- /.main-content -->
 </div><!-- /.main-container -->
 
-
+<script type="text/javascript" src="/components/angular/angular.min.js"></script>
+<script type="text/javascript">
+    angular.module("app", []).controller("home", function($http) {
+        var self = this;
+        $http.get("/info").success(function(data) {
+            self.user = data.userAuthentication.details.name;
+            self.authenticated = true;
+        }).error(function() {
+            self.user = "N/A";
+            self.authenticated = false;
+        });
+    });
+</script>
 </body>
 </html>

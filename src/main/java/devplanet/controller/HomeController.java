@@ -3,9 +3,13 @@ package devplanet.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.security.Principal;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by jojoldu@gmail.com on 2016-03-09.
@@ -20,5 +24,9 @@ public class HomeController {
         return "index";
     }
 
+    @RequestMapping("/info")
+    public Principal user(Principal principal) {
+        return principal;
+    }
 
 }
