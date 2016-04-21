@@ -25,6 +25,7 @@ public class HomeController {
     }
 
     @RequestMapping("/info")
+    @ResponseBody
     public Principal user(Principal principal) {
         return principal;
     }

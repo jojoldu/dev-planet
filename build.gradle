@@ -8,6 +8,7 @@ buildscript {
     ext.springSocialGithubVersion = '1.0.0.M4'
     ext.springSecurityOauth2 = '2.0.9.RELEASE'
     ext.springCloudSecurity = '1.0.3.RELEASE'
+    ext.springSession = '1.0.1.RELEASE'
 
     repositories {
         jcenter()
@@ -37,9 +38,10 @@ repositories {
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
     compile("org.springframework.boot:spring-boot-starter-security:$springBootVersion")
-    compile("org.springframework.security.oauth:spring-security-oauth2:$springSecurityOauth2")
     compile("org.springframework.boot:spring-boot-starter-freemarker:$springBootVersion")
     compile("org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion")
+    compile("org.springframework.security.oauth:spring-security-oauth2:$springSecurityOauth2")
+    compile("org.springframework.session:spring-session:$springSession")
     compile('com.github.kstyrc:embedded-redis:0.6')
     compile("com.fasterxml.jackson.core:jackson-databind")
     compile('org.freemarker:freemarker:2.3.23')
