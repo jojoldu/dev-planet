@@ -11,11 +11,31 @@ spring:
     sql-script-encoding: UTF-8
   redis:
     port: 6379
-    host: localhost
+    host: 127.0.0.1
     password: secret
 
+security:
+  oauth2:
+    client:
+      clientId: 917614cfb633b397de81
+      clientSecret: c69ab2f4c6494be57d28ecb89bb4ce364ce7f29a
+      accessTokenUri: https://github.com/login/oauth/access_token
+      userAuthorizationUri: https://github.com/login/oauth/authorize
+      clientAuthenticationScheme: form
+    resource:
+      userInfoUri: https://api.github.com/user
+      preferTokenInfo: false
+
+github:
+  client:
+    clientId: 917614cfb633b397de81
+    clientSecret: c69ab2f4c6494be57d28ecb89bb4ce364ce7f29a
+    accessTokenUri: https://github.com/login/oauth/access_token
+    userAuthorizationUri: https://github.com/login/oauth/authorize
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://api.github.com/user
 
 client:
   id: 917614cfb633b397de81
   secret: c69ab2f4c6494be57d28ecb89bb4ce364ce7f29a
-

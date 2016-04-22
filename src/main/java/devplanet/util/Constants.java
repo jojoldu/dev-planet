@@ -12,6 +12,6 @@ public interface Constants {
    String GITHUB_USER_EMAIL = "email";
 
    String DOMAIN = "http://localhost:8080";
-   String OAUTH_REDIRECT_URI = DOMAIN + "/oauth/auth";
+   String OAUTH_REDIRECT_URI = DOMAIN + "/login/oauth";
    String KEY_ACCESS_TOKEN = "access_token";
 }
