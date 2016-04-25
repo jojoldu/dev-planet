@@ -8,21 +8,21 @@
     <meta name="author" content="jojoldu@gmail.com">
     <title>Dev Planet</title>
 
-    <!-- bootstrap & fontawesome -->
+    <!-- materialize -->
     <link rel="stylesheet" href="/components/Materialize/dist/css/materialize.min.css" />
 
     <!-- text fonts -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!-- ace styles -->
+    <!-- custom styles -->
     <link rel="stylesheet" href="/css/index.css" />
 
 </head>
 
-<body ng-app="index">
+<body ng-app="index" ng-init="">
 <nav class="white" role="navigation">
     <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo">Daily Commit Group</a>
+        <a id="logo-container" href="/" class="brand-logo">Daily Commit Group</a>
         <ul class="right hide-on-med-and-down">
             <gnb></gnb>
         </ul>
@@ -37,17 +37,12 @@
     <div class="section no-pad-bot">
         <div class="container">
             <br><br>
-            <h1 class="header center teal-text text-lighten-2">당신의 커밋을 자랑하세요!</h1>
-            <div class="row center">
-                <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-            </div>
-            <div class="row center">
-            </div>
+            <h1 class="header center teal-text text-white">당신의 커밋을 공유하세요!</h1>
             <br><br>
 
         </div>
     </div>
-    <div class="parallax"><img src="/img/commit.png" alt="Unsplashed background img 1" style="display: block; transform: translate3d(-50%, 218px, 0px);"></div>
+    <div class="parallax"><img src="/img/github-universe.jpg" alt="Unsplashed background img 1" style="display: block; transform: translate3d(-50%, 218px, 0px);"></div>
 </div>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="/components/Materialize/dist/js/materialize.min.js"></script>

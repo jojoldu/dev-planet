@@ -1,7 +1,11 @@
 package devplanet.controller;
 
+import devplanet.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -13,8 +17,13 @@ import java.security.Principal;
 @Controller
 public class HomeController {
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping("/")
-    public String main(){
+    public String main(Principal principal,OAuth2Authentication auth, Model model){
+        model.addAttribute("userName", principal.getName());
+        model.addAttribute("auth", auth.isAuthenticated());
         return "index";
     }
 
@@ -22,5 +31,12 @@ public class HomeController {
     @ResponseBody
     public OAuth2Authentication user(OAuth2Authentication auth) {
         return auth;
+    }
+
+    @RequestMapping("/repos")
+    public String repos(OAuth2Authentication auth, Principal principal , Model model){
+        OAuth2AuthenticationDetails details = (OAuth2AuthenticationDetails)auth.getDetails();
+        model.addAttribute("repos", userService.getRepository(principal.getName(), details.getTokenValue()));
+        return "repos";
     }
 }

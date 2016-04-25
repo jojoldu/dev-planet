@@ -9,5 +9,5 @@ import java.util.Map;
  * Created by jojoldu@zuminternet.com on 2016-04-23.
  */
 public interface UserService {
-    List<Map<String, Object>> getRepository(OAuth2Authentication auth);
+    List<Map<String, Object>> getRepository(String userName, String accessToken);
 }

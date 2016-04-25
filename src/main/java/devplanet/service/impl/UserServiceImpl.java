@@ -1,10 +1,10 @@
 package devplanet.service.impl;
 
-import devplanet.pojo.OauthDetails;
 import devplanet.service.UserService;
 import devplanet.util.Constants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -17,16 +17,20 @@ import java.util.Map;
 @Service
 public class UserServiceImpl implements UserService{
 
+    private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+
     @Autowired
     private RestTemplate restTemplate;
 
     @Override
-    public List<Map<String, Object>> getRepository(OAuth2Authentication auth) {
-        String id = auth.getName();
-        
-        List<Map<String, Object>> repos = restTemplate.getForObject(Constants.URL_GET_REPOS.replace(":id", id)+auth.getDetails(), List.class);
-
-        return repos;
+    @SuppressWarnings("unchecked")
+    public List<Map<String, Object>> getRepository(String userName, String accessToken) {
+        try {
+            return restTemplate.getForObject(Constants.URL_GET_REPOS.replace(":id", userName) + accessToken, List.class);
+        }catch(Exception e){
+            logger.error("get Repository list error", e);
+            return null;
+        }
     }
 
 }
