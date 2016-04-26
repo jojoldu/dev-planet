@@ -36,6 +36,5 @@ github:
   resource:
     userInfoUri: https://api.github.com/user
 
-client:
-  id: 917614cfb633b397de81
-  secret: c69ab2f4c6494be57d28ecb89bb4ce364ce7f29a
+
+logLocation: /data/log/devplanet.kr/

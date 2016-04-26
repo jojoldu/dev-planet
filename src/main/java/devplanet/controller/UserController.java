@@ -17,4 +17,5 @@ public class UserController {
     public String getUser(@PathVariable String userName, Model model){
         return "user";
     }
+
 }
