@@ -1,5 +1,6 @@
 package devplanet.controller;
 
+import devplanet.pojo.SimpleAuthResponse;
 import devplanet.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
@@ -21,16 +22,14 @@ public class HomeController {
     private UserService userService;
 
     @RequestMapping("/")
-    public String main(Principal principal,OAuth2Authentication auth, Model model){
-        model.addAttribute("userName", principal.getName());
-        model.addAttribute("auth", auth.isAuthenticated());
+    public String main(){
         return "index";
     }
 
     @RequestMapping("/info")
     @ResponseBody
-    public OAuth2Authentication user(OAuth2Authentication auth) {
-        return auth;
+    public SimpleAuthResponse user(OAuth2Authentication auth, Principal principal) {
+        return new SimpleAuthResponse(principal.getName(), true);
     }
 
     @RequestMapping("/repos")
