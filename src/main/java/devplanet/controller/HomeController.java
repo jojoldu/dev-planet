@@ -28,7 +28,7 @@ public class HomeController {
 
     @RequestMapping("/info")
     @ResponseBody
-    public SimpleAuthResponse user(OAuth2Authentication auth, Principal principal) {
+    public SimpleAuthResponse user(Principal principal) {
         return new SimpleAuthResponse(principal.getName(), true);
     }
 

@@ -1,13 +1,18 @@
 package devplanet.service.impl;
 
+import devplanet.pojo.Streak;
 import devplanet.service.UserService;
 import devplanet.util.Constants;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -33,4 +38,18 @@ public class UserServiceImpl implements UserService{
         }
     }
 
+    @Override
+    public Streak getStreak(String userName) {
+        try{
+            Document doc = Jsoup.connect("http://en.wikipedia.org/").get();
+            Elements contributes = doc.select(".contrib-number");
+            String lastYear = contributes.get(0).text().split(" ")[0];
+            String longest = contributes.get(1).text().split(" ")[0];
+            String current = contributes.get(2).text().split(" ")[0];
+            return new Streak(lastYear, longest, current);
+        }catch (Exception e){
+
+            return Streak.NULL_STREAK;
+        }
+    }
 }
