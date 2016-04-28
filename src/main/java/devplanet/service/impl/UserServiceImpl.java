@@ -27,6 +27,7 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private RestTemplate restTemplate;
 
+    private static final String GITHUB_URL = "https://github.com/";
     @Override
     @SuppressWarnings("unchecked")
     public List<Map<String, Object>> getRepository(String userName, String accessToken) {
@@ -41,7 +42,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public Streak getStreak(String userName) {
         try{
-            Document doc = Jsoup.connect("http://en.wikipedia.org/").get();
+            Document doc = Jsoup.connect(GITHUB_URL+userName).get();
             Elements contributes = doc.select(".contrib-number");
             String lastYear = contributes.get(0).text().split(" ")[0];
             String longest = contributes.get(1).text().split(" ")[0];
