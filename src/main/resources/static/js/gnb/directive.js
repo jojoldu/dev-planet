@@ -6,7 +6,7 @@ angular.module('gnb')
         return {
             restrict: 'E',
             templateUrl: function(){
-                return '/js/index/gnb.html';
+                return '/js/gnb/gnb.html';
             }
         }
     });
