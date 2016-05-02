@@ -7,7 +7,7 @@
 
 </head>
 
-<body ng-app="index">
+<body>
 <#include '/layout/gnb.ftl'>
 <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
