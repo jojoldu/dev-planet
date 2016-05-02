@@ -1,4 +1,4 @@
-<nav ng-app="gnb" ng-controller="" class="white" role="navigation">
+<nav ng-app="gnb" ng-controller="GnbController" class="white" role="navigation">
     <div class="nav-wrapper container">
         <a id="logo-container" href="/" class="brand-logo">Daily Commit Group</a>
         <ul class="right hide-on-med-and-down">
