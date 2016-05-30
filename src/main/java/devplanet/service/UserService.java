@@ -1,7 +1,6 @@
 package devplanet.service;
 
-import devplanet.pojo.Streak;
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import devplanet.model.Streak;
 
 import java.util.List;
 import java.util.Map;

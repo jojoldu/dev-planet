@@ -11,23 +11,11 @@
     <div class="col s12 m4">
         <div class="card card-avatar">
             <div class="waves-effect waves-block waves-light">
-                <i class="material-icons large track_changes"></i>
-            </div>
-            <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">1년간의 총 커밋<br>
-                    <small><em><a class="red-text text-darken-1" href="#">${streak.lastYear}</a></em></small>
-                </span>
-            </div>
-        </div>
-    </div>
-    <div class="col s12 m4">
-        <div class="card card-avatar">
-            <div class="waves-effect waves-block waves-light">
                 <i class="material-icons large trending_up"></i>
             </div>
             <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">최고 연속 커밋<br>
-                    <small><em><a class="red-text text-darken-1" href="#">${streak.longest}</a></em></small>
+                <span class="card-title activator grey-text text-darken-4">최근 커밋 일자<br>
+                    <small><em><a class="red-text text-darken-1" href="#">${streak.lastCheckDate}</a></em></small>
                 </span>
             </div>
         </div>

@@ -1,10 +1,12 @@
 package devplanet.service.impl;
 
-import devplanet.pojo.Streak;
+import devplanet.model.Streak;
 import devplanet.service.UserService;
 import devplanet.util.Constants;
+import org.joda.time.DateTime;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -27,7 +28,9 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private RestTemplate restTemplate;
 
-    private static final String GITHUB_URL = "https://github.com/";
+    private static final String GITHUB_URL = "https://github.com/users/";
+    private static final String CONTRIBUTION = "/contributions";
+
     @Override
     @SuppressWarnings("unchecked")
     public List<Map<String, Object>> getRepository(String userName, String accessToken) {
@@ -42,15 +45,32 @@ public class UserServiceImpl implements UserService{
     @Override
     public Streak getStreak(String userName) {
         try{
-            Document doc = Jsoup.connect(GITHUB_URL+userName).get();
-            Elements contributes = doc.select(".contrib-number");
-            String lastYear = contributes.get(0).text().split(" ")[0];
-            String longest = contributes.get(1).text().split(" ")[0];
-            String current = contributes.get(2).text().split(" ")[0];
-            return new Streak(lastYear, longest, current);
-        }catch (Exception e){
+            StringBuffer sb = new StringBuffer();
+            sb.append(GITHUB_URL).append(userName).append(CONTRIBUTION);
+            Document doc = Jsoup.connect(sb.toString()).get();
+            Elements contributes = doc.select("rect");
+            int size = contributes.size();
+            int continuousStreak=0;
+            DateTime lastCheckDate = null;
 
-            return Streak.NULL_STREAK;
+            while(continuousStreak < 100){
+                Element e = contributes.get(size-continuousStreak-1);
+                String dataCount = e.attr("data-count");
+                if("0".equals(dataCount)){
+                    lastCheckDate = new DateTime(e.attr("data-date"));
+                    break;
+                }
+
+                continuousStreak++;
+            }
+            if(lastCheckDate == null){
+                lastCheckDate = new DateTime().minusDays(1);
+            }
+
+            return new Streak(lastCheckDate, continuousStreak);
+
+        }catch (Exception e){
+            return null;
         }
     }
 }
