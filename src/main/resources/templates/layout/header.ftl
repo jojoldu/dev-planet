@@ -6,7 +6,4 @@
 <title>Dev Planet</title>
 
 <!-- materialize -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-
-<!-- text fonts -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css">

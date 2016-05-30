@@ -3,9 +3,9 @@
  */
 angular.module("gnb", [])
     .controller("GnbController", function($scope, $http) {
-    $http.get('/info').then(function(data){
-        $scope.user = data.userName;
-        $scope.authenticated = true;
+    $http.get('/info').then(function(response){
+        $scope.user = response.data.userName;
+        $scope.authenticated = response.data.authentication;
     }, function(){
         $scope.user = "";
         $scope.authenticated = false;
