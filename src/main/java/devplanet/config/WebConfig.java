@@ -57,8 +57,4 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return new OrderedRequestContextFilter();
     }
 
-//    @Bean
-//    public HttpSessionStrategy httpSessionStrategy() {
-//        return new HeaderHttpSessionStrategy();
-//    }
 }
