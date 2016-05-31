@@ -15,8 +15,13 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="javascript:;" >게시판</a></li>
-                <li><a href="/login/github"  ng-show="!authenticated">Login</a></li>
-                <li><a ng-href="/user/{{user}}"  ng-show="authenticated">{{user}}</a></li>
+                <li>
+                <#if userName == "">
+                    <a href="/login/github">Login</a>
+                <#else>
+                    <a ng-href="/user/${userName}" >${userName}</a>
+                </#if>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

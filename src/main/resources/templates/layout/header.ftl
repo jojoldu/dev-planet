@@ -5,5 +5,4 @@
 <meta name="author" content="jojoldu@gmail.com">
 <title>Dev Planet</title>
 
-<!-- materialize -->
 <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css">

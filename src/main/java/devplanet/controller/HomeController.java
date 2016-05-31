@@ -26,12 +26,6 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping("/info")
-    @ResponseBody
-    public SimpleAuthResponse user(Principal principal) {
-        return new SimpleAuthResponse(principal.getName(), true);
-    }
-
     @RequestMapping("/repos")
     public String repos(OAuth2Authentication auth, Principal principal , Model model){
         OAuth2AuthenticationDetails details = (OAuth2AuthenticationDetails)auth.getDetails();
