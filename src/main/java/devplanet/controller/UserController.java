@@ -18,11 +18,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/")
-    public String join(){
-        return "";
-    }
-
     @RequestMapping("/{userName}")
     public String getUser(@PathVariable String userName, Model model){
         model.addAttribute("streak", userService.getStreak(userName));

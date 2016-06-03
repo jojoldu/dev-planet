@@ -36,5 +36,4 @@ github:
   resource:
     userInfoUri: https://api.github.com/user
 
-
 logLocation: /data/log/devplanet.kr/

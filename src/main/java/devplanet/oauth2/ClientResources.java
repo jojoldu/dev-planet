@@ -1,4 +1,4 @@
-package devplanet.pojo;
+package devplanet.oauth2;
 
 import org.springframework.boot.autoconfigure.security.oauth2.resource.ResourceServerProperties;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;

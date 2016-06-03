@@ -10,7 +10,7 @@
     <ul class="collection">
         <#list repos as repo>
             <li class="collection-item avatar">
-                <input type="checkbox" class="filled-in" id="filled-in-box"/>
+                <input type="checkbox" class="filled-in" userName="filled-in-box"/>
                 <span class="title">${repo.name}</span>
                 <p>${repo.description} <br>
                     ${repo.created_at}
