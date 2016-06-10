@@ -86,9 +86,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     @ConfigurationProperties("github")
     public ClientResources github() {
-        ClientResources clientResources = new ClientResources();
-        clientResources.getClient().
-        return
+        return new ClientResources();
     }
 
     private Filter ssoFilter() {
