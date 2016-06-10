@@ -8,8 +8,13 @@ import org.springframework.security.oauth2.client.token.grant.code.Authorization
  * Created by jojoldu@zuminternet.com on 2016-04-21.
  */
 public class ClientResources {
-    private OAuth2ProtectedResourceDetails client = new AuthorizationCodeResourceDetails();
-    private ResourceServerProperties resource = new ResourceServerProperties();
+    private OAuth2ProtectedResourceDetails client;
+    private ResourceServerProperties resource;
+
+    public ClientResources() {
+        this.client = new AuthorizationCodeResourceDetails();
+        this.resource = new ResourceServerProperties();
+    }
 
     public OAuth2ProtectedResourceDetails getClient() {
         return client;
