@@ -36,8 +36,8 @@ github:
     userAuthorizationUri: https://github.com/login/oauth/authorize
     clientAuthenticationScheme: form
     #pre-established-redirect-uri: http://www.devplanet.kr:8080/auth
-    use-current-uri: false #redirect_uri 변경시 필수로 추가되어야하는 조건
-    registered-redirect-uri: http://www.devplanet.kr:8080/auth
+    #use-current-uri: false #redirect_uri 변경시 필수로 추가되어야하는 조건
+    #registered-redirect-uri: http://www.devplanet.kr:8080/auth
   resource:
     userInfoUri: https://api.github.com/user
 
