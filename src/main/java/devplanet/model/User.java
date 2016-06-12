@@ -15,7 +15,7 @@ public class User {
     private Integer idx;
 
     @Column(nullable = false)
-    private String id;
+    private String userName;
 
     @Column(nullable = false)
     private String email;
@@ -29,13 +29,13 @@ public class User {
     public User() {
     }
 
-    public User(String id, String email) {
-        this.id = id;
+    public User(String userName, String email) {
+        this.userName = userName;
         this.email = email;
     }
 
-    public User(String id, String email, List<Repository> repositories) {
-        this.id = id;
+    public User(String userName, String email, List<Repository> repositories) {
+        this.userName = userName;
         this.email = email;
         this.repositories = repositories;
     }
@@ -48,12 +48,12 @@ public class User {
         this.idx = idx;
     }
 
-    public String getId() {
-        return id;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getEmail() {
