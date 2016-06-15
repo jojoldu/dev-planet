@@ -28,6 +28,7 @@ import org.springframework.security.oauth2.client.filter.OAuth2ClientAuthenticat
 import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter;
 import org.springframework.security.oauth2.client.token.DefaultAccessTokenRequest;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
+import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.security.web.csrf.CsrfToken;
@@ -98,15 +99,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     private Filter ssoFilter(ClientResources client, String path) {
+        //위 path로 들어오면 Oauth2 인증 시작하도록 Filter 생성
         OAuth2ClientAuthenticationProcessingFilter oAuth2ClientAuthenticationFilter =
                 new OAuth2ClientAuthenticationProcessingFilter(path);
+        //Oauth 2.0 통신 가능한 RestTemplate 생성
         OAuth2RestTemplate oAuth2RestTemplate = new OAuth2RestTemplate(client.getClient(),
                 oauth2ClientContext);
         oAuth2ClientAuthenticationFilter.setRestTemplate(oAuth2RestTemplate);
+        //access token으로 회원정보 가져올수 있도록 url, 토큰 서비스  지정
         UserInfoTokenServices tokenServices = new UserInfoTokenServices(
                 client.getResource().getUserInfoUri(), client.getClient().getClientId());
         tokenServices.setRestTemplate(oAuth2RestTemplate);
         oAuth2ClientAuthenticationFilter.setTokenServices(tokenServices);
+        //인증 및 회원정보 가져온 후, 리다이렉트 페이지 지정
+        SavedRequestAwareAuthenticationSuccessHandler savedRequestAwareAuthenticationSuccessHandler = new SavedRequestAwareAuthenticationSuccessHandler();
+        savedRequestAwareAuthenticationSuccessHandler.setDefaultTargetUrl("/auth");
+        oAuth2ClientAuthenticationFilter.setAuthenticationSuccessHandler(savedRequestAwareAuthenticationSuccessHandler);
         return oAuth2ClientAuthenticationFilter;
     }
 
