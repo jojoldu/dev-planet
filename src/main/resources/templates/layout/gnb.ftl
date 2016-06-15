@@ -14,7 +14,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" userName="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="javascript:;" >게시판</a></li>
+                <li><a href="/auth"> Auth </a></li>
                 <li>
                 <#if userName == "">
                     <a href="/login/github">Login</a>

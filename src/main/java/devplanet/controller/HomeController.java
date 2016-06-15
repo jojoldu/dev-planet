@@ -1,6 +1,6 @@
 package devplanet.controller;
 
-import devplanet.oauth2.Github;
+import devplanet.oauth2.GithubUser;
 import devplanet.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +32,13 @@ public class HomeController {
 
     @RequestMapping("/auth")
     @ResponseBody
-    public Principal auth(OAuth2Authentication auth, Principal principal){
-        Github github = objectMapper.convertValue(auth.getUserAuthentication().getDetails(), Github.class);
-        return principal;
+    public GithubUser auth(OAuth2Authentication auth){
+        if(auth != null){
+            GithubUser githubUser = objectMapper.convertValue(auth.getUserAuthentication().getDetails(), GithubUser.class);
+            return githubUser;
+        }
+
+        return new GithubUser();
     }
 
     @RequestMapping("/repos")

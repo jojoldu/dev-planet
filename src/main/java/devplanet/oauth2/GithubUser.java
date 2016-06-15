@@ -1,17 +1,20 @@
 package devplanet.oauth2;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
 /**
  * Created by jojoldu@zuminternet.com on 2016-05-31.
  */
-public class Github implements UserDetails{
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class GithubUser {
 
     private int id;
     private String login;
+    @JsonProperty("avatar_url")
     private String avatarUrl;
     private String name;
     private String company;
@@ -101,38 +104,4 @@ public class Github implements UserDetails{
         this.bio = bio;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    @Override
-    public String getPassword() {
-        return null;
-    }
-
-    @Override
-    public String getUsername() {
-        return null;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return false;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return false;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return false;
-    }
 }
