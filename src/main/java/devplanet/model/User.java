@@ -1,5 +1,7 @@
 package devplanet.model;
 
+import devplanet.oauth2.GithubUser;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,11 +16,17 @@ public class User {
     @GeneratedValue
     private Integer idx;
 
-    @Column(nullable = false)
+    @Column
+    private Integer githubIdx;
+
+    @Column(nullable = true)
     private String userName;
 
     @Column(nullable = false)
     private String email;
+
+    @Column(nullable = false)
+    private String avatar;
 
     @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="user")
     private List<Repository> repositories;
@@ -40,12 +48,27 @@ public class User {
         this.repositories = repositories;
     }
 
+    public User(GithubUser githubUser) {
+        this.githubIdx = githubUser.getId();
+        this.userName = githubUser.getLogin();
+        this.email = githubUser.getEmail();
+        this.avatar = githubUser.getAvatarUrl();
+    }
+
     public Integer getIdx() {
         return idx;
     }
 
     public void setIdx(Integer idx) {
         this.idx = idx;
+    }
+
+    public Integer getGithubIdx() {
+        return githubIdx;
+    }
+
+    public void setGithubIdx(Integer githubIdx) {
+        this.githubIdx = githubIdx;
     }
 
     public String getUserName() {
@@ -62,6 +85,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public List<Repository> getRepositories() {

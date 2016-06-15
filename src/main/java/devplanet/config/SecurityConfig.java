@@ -113,7 +113,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         oAuth2ClientAuthenticationFilter.setTokenServices(tokenServices);
         //인증 및 회원정보 가져온 후, 리다이렉트 페이지 지정
         SavedRequestAwareAuthenticationSuccessHandler savedRequestAwareAuthenticationSuccessHandler = new SavedRequestAwareAuthenticationSuccessHandler();
-        savedRequestAwareAuthenticationSuccessHandler.setDefaultTargetUrl("/auth");
+        savedRequestAwareAuthenticationSuccessHandler.setDefaultTargetUrl("/join");
         oAuth2ClientAuthenticationFilter.setAuthenticationSuccessHandler(savedRequestAwareAuthenticationSuccessHandler);
         return oAuth2ClientAuthenticationFilter;
     }

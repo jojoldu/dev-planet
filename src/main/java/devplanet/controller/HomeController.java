@@ -9,7 +9,6 @@ import org.springframework.security.oauth2.provider.authentication.OAuth2Authent
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.security.Principal;
 
@@ -26,19 +25,17 @@ public class HomeController {
     private ObjectMapper objectMapper;
 
     @RequestMapping("/")
-    public String main(OAuth2Authentication auth, Principal principal){
+    public String main(){
         return "index";
     }
 
-    @RequestMapping("/auth")
-    @ResponseBody
-    public GithubUser auth(OAuth2Authentication auth){
+    @RequestMapping("/join")
+    public String join(OAuth2Authentication auth){
         if(auth != null){
             GithubUser githubUser = objectMapper.convertValue(auth.getUserAuthentication().getDetails(), GithubUser.class);
-            return githubUser;
         }
 
-        return new GithubUser();
+        return "redirect:/";
     }
 
     @RequestMapping("/repos")

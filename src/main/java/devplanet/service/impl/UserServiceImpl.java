@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService{
     private static final String CONTRIBUTION = "/contributions";
 
     @Override
-    public User joinAndLogin(User user) {
+    public User join(User user) {
         User joinedUser = userDao.findByUserName(user.getUserName());
 
         if(joinedUser == null){
