@@ -19,14 +19,11 @@ public class User {
     @Column
     private Integer githubIdx;
 
-    @Column(nullable = true)
+    @Column
     private String userName;
 
     @Column(nullable = false)
     private String email;
-
-    @Column(nullable = false)
-    private String avatar;
 
     @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="user")
     private List<Repository> repositories;
@@ -52,7 +49,6 @@ public class User {
         this.githubIdx = githubUser.getId();
         this.userName = githubUser.getLogin();
         this.email = githubUser.getEmail();
-        this.avatar = githubUser.getAvatarUrl();
     }
 
     public Integer getIdx() {
@@ -85,14 +81,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
     }
 
     public List<Repository> getRepositories() {

@@ -1,5 +1,6 @@
 package devplanet.controller;
 
+import devplanet.model.User;
 import devplanet.oauth2.GithubUser;
 import devplanet.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,10 +30,13 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping("/join")
-    public String join(OAuth2Authentication auth){
+    @RequestMapping("/login")
+    public String login(OAuth2Authentication auth, Model model){
         if(auth != null){
             GithubUser githubUser = objectMapper.convertValue(auth.getUserAuthentication().getDetails(), GithubUser.class);
+            User user = userService.login(githubUser);
+            model.addAttribute("streak", user.getStreak());
+            model.addAttribute("githubUser", githubUser);
         }
 
         return "redirect:/";
