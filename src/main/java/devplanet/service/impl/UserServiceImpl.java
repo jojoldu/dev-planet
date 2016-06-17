@@ -3,6 +3,7 @@ package devplanet.service.impl;
 import devplanet.dao.UserDao;
 import devplanet.model.Streak;
 import devplanet.model.User;
+import devplanet.oauth2.GithubUser;
 import devplanet.service.UserService;
 import devplanet.util.Constants;
 import org.joda.time.DateTime;
@@ -38,33 +39,13 @@ public class UserServiceImpl implements UserService{
     private static final String GITHUB_URL = "https://github.com/users/";
     private static final String CONTRIBUTION = "/contributions";
 
-    @Override
-    public User joinAndLogin(User user) {
-        User joinedUser = userDao.findByUserName(user.getUserName());
-
-        if(joinedUser == null){
-            userDao.save(user);
-        }
-
-        return user;
-    }
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public List<Map<String, Object>> getRepository(String userName, String accessToken) {
-        try {
-            return restTemplate.getForObject(Constants.URL_GET_REPOS.replace(":id", userName) + accessToken, List.class);
-        }catch(Exception e){
-            logger.error("get Repository list error", e);
-            return null;
-        }
-    }
-
-    @Override
-    public Streak getStreak(String userName) {
+    private Streak getStreakByGithub(String userName){
         try{
-            StringBuffer sb = new StringBuffer();
-            sb.append(GITHUB_URL).append(userName).append(CONTRIBUTION);
+            StringBuilder sb = new StringBuilder()
+                    .append(GITHUB_URL)
+                    .append(userName)
+                    .append(CONTRIBUTION);
+
             Document doc = Jsoup.connect(sb.toString()).get();
             Elements contributes = doc.select("rect");
             int size = contributes.size();
@@ -88,6 +69,66 @@ public class UserServiceImpl implements UserService{
             return new Streak(lastCheckDate, continuousStreak);
 
         }catch (Exception e){
+            logger.error("get streak exception", e);
+            return null;
+        }
+    }
+
+    @Override
+    public User login(GithubUser githubUser) {
+        User user = userDao.findByGithubIdx(githubUser.getId());
+
+        if(user == null){
+            user = new User(githubUser);
+        }
+        user.setStreak(this.getStreakByGithub(githubUser.getLogin()));
+        userDao.save(user);
+        return user;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Map<String, Object>> getRepository(String userName, String accessToken) {
+        try {
+            return restTemplate.getForObject(Constants.URL_GET_REPOS.replace(":id", userName) + accessToken, List.class);
+        }catch(Exception e){
+            logger.error("get Repository list error", e);
+            return null;
+        }
+    }
+
+    @Override
+    public Streak getStreak(String userName) {
+        try{
+            StringBuilder sb = new StringBuilder()
+                    .append(GITHUB_URL)
+                    .append(userName)
+                    .append(CONTRIBUTION);
+
+            Document doc = Jsoup.connect(sb.toString()).get();
+            Elements contributes = doc.select("rect");
+            int size = contributes.size();
+            int continuousStreak=0;
+            DateTime lastCheckDate = null;
+
+            while(continuousStreak < 100){
+                Element e = contributes.get(size-continuousStreak-1);
+                String dataCount = e.attr("data-count");
+                if("0".equals(dataCount)){
+                    lastCheckDate = new DateTime(e.attr("data-date"));
+                    break;
+                }
+
+                continuousStreak++;
+            }
+            if(lastCheckDate == null){
+                lastCheckDate = new DateTime().minusDays(1);
+            }
+
+            return new Streak(lastCheckDate, continuousStreak);
+
+        }catch (Exception e){
+            logger.error("get streak exception", e);
             return null;
         }
     }

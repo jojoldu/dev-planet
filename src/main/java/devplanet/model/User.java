@@ -1,5 +1,7 @@
 package devplanet.model;
 
+import devplanet.oauth2.GithubUser;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,7 +16,10 @@ public class User {
     @GeneratedValue
     private Integer idx;
 
-    @Column(nullable = false)
+    @Column
+    private Integer githubIdx;
+
+    @Column
     private String userName;
 
     @Column(nullable = false)
@@ -40,12 +45,26 @@ public class User {
         this.repositories = repositories;
     }
 
+    public User(GithubUser githubUser) {
+        this.githubIdx = githubUser.getId();
+        this.userName = githubUser.getLogin();
+        this.email = githubUser.getEmail();
+    }
+
     public Integer getIdx() {
         return idx;
     }
 
     public void setIdx(Integer idx) {
         this.idx = idx;
+    }
+
+    public Integer getGithubIdx() {
+        return githubIdx;
+    }
+
+    public void setGithubIdx(Integer githubIdx) {
+        this.githubIdx = githubIdx;
     }
 
     public String getUserName() {

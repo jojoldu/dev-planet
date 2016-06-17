@@ -1,5 +1,6 @@
 package devplanet.controller;
 
+import devplanet.model.User;
 import devplanet.oauth2.GithubUser;
 import devplanet.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,7 +10,6 @@ import org.springframework.security.oauth2.provider.authentication.OAuth2Authent
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.security.Principal;
 
@@ -26,19 +26,20 @@ public class HomeController {
     private ObjectMapper objectMapper;
 
     @RequestMapping("/")
-    public String main(OAuth2Authentication auth, Principal principal){
+    public String main(){
         return "index";
     }
 
-    @RequestMapping("/auth")
-    @ResponseBody
-    public GithubUser auth(OAuth2Authentication auth){
+    @RequestMapping("/login")
+    public String login(OAuth2Authentication auth, Model model){
         if(auth != null){
             GithubUser githubUser = objectMapper.convertValue(auth.getUserAuthentication().getDetails(), GithubUser.class);
-            return githubUser;
+            User user = userService.login(githubUser);
+            model.addAttribute("streak", user.getStreak());
+            model.addAttribute("githubUser", githubUser);
         }
 
-        return new GithubUser();
+        return "redirect:/";
     }
 
     @RequestMapping("/repos")
