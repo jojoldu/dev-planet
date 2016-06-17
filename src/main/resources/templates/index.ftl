@@ -3,7 +3,7 @@
 <head>
     <#include '/layout/header.ftl'>
     <!-- custom styles -->
-    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
 
 </head>
 
@@ -103,7 +103,6 @@
 <!-- /.container -->
 
 <#include '/layout/footer.ftl'>
-<script type="text/javascript" src="/js/index/controller.js"></script>
-<script type="text/javascript" src="/js/index/directive.js"></script>
+
 </body>
 </html>

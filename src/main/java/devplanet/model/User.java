@@ -22,9 +22,6 @@ public class User {
     @Column
     private String userName;
 
-    @Column(nullable = false)
-    private String email;
-
     @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="user")
     private List<Repository> repositories;
 
@@ -34,21 +31,9 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String email) {
-        this.userName = userName;
-        this.email = email;
-    }
-
-    public User(String userName, String email, List<Repository> repositories) {
-        this.userName = userName;
-        this.email = email;
-        this.repositories = repositories;
-    }
-
     public User(GithubUser githubUser) {
         this.githubIdx = githubUser.getId();
         this.userName = githubUser.getLogin();
-        this.email = githubUser.getEmail();
     }
 
     public Integer getIdx() {
@@ -73,14 +58,6 @@ public class User {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public List<Repository> getRepositories() {

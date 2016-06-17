@@ -3,6 +3,9 @@
 <meta name="description" content="Start Page" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 <meta name="author" content="jojoldu@gmail.com">
-<title>Dev Planet</title>
+<title>Daily Commit</title>
 
 <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/ace.min.css">
+<link rel="stylesheet" href="/css/ace-fonts.min.css">
+<link rel="stylesheet" href="/css/ace-skins.min.css">
