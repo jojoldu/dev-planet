@@ -20,7 +20,7 @@ public class UserController {
 
     @RequestMapping("/{userName}")
     public String getUser(@PathVariable String userName, Model model){
-        model.addAttribute("streak", userService.getStreak(userName));
+        //model.addAttribute("streak", userService.getStreak(userName));
         return "user";
     }
 

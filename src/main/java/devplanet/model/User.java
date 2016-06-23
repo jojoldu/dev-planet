@@ -75,4 +75,15 @@ public class User {
     public void setStreak(Streak streak) {
         this.streak = streak;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "idx=" + idx +
+                ", githubIdx=" + githubIdx +
+                ", userName='" + userName + '\'' +
+                ", repositories=" + repositories +
+                ", streak=" + streak +
+                '}';
+    }
 }
