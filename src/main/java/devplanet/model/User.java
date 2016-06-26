@@ -43,6 +43,14 @@ public class User {
         this.userName = githubUser.getLogin();
     }
 
+    public User(Integer githubIdx, String userName, DateTime lastCheckDate, int currentStreak, int point) {
+        this.githubIdx = githubIdx;
+        this.userName = userName;
+        this.lastCheckDate = lastCheckDate;
+        this.currentStreak = currentStreak;
+        this.point = point;
+    }
+
     public Integer getIdx() {
         return idx;
     }
