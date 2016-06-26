@@ -26,17 +26,16 @@ public class HomeController {
     private ObjectMapper objectMapper;
 
     @RequestMapping("/")
-    public String main(){
+    public String main(Model model){
+        model.addAttribute("userList", userService.findAll());
         return "index";
     }
 
     @RequestMapping("/login")
-    public String login(OAuth2Authentication auth, Model model){
+    public String login(OAuth2Authentication auth){
         if(auth != null){
             GithubUser githubUser = objectMapper.convertValue(auth.getUserAuthentication().getDetails(), GithubUser.class);
-            User user = userService.login(githubUser);
-            model.addAttribute("streak", user.getStreak());
-            model.addAttribute("githubUser", githubUser);
+            userService.login(githubUser);
         }
 
         return "redirect:/";

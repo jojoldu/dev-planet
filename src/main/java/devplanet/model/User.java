@@ -1,6 +1,7 @@
 package devplanet.model;
 
 import devplanet.oauth2.GithubUser;
+import org.joda.time.DateTime;
 
 import javax.persistence.*;
 import java.util.List;
@@ -25,8 +26,14 @@ public class User {
     @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="user")
     private List<Repository> repositories;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
-    private Streak streak;
+    @Column(name="last_check_date")
+    private DateTime lastCheckDate;
+
+    @Column(name="current_streak")
+    private int currentStreak;
+
+    @Column(name="point")
+    private int point;
 
     public User() {
     }
@@ -68,22 +75,27 @@ public class User {
         this.repositories = repositories;
     }
 
-    public Streak getStreak() {
-        return streak;
+    public DateTime getLastCheckDate() {
+        return lastCheckDate;
     }
 
-    public void setStreak(Streak streak) {
-        this.streak = streak;
+    public void setLastCheckDate(DateTime lastCheckDate) {
+        this.lastCheckDate = lastCheckDate;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "idx=" + idx +
-                ", githubIdx=" + githubIdx +
-                ", userName='" + userName + '\'' +
-                ", repositories=" + repositories +
-                ", streak=" + streak +
-                '}';
+    public int getCurrentStreak() {
+        return currentStreak;
+    }
+
+    public void setCurrentStreak(int currentStreak) {
+        this.currentStreak = currentStreak;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
     }
 }

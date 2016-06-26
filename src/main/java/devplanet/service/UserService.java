@@ -1,6 +1,5 @@
 package devplanet.service;
 
-import devplanet.model.Streak;
 import devplanet.model.User;
 import devplanet.oauth2.GithubUser;
 

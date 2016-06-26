@@ -1,7 +1,6 @@
 package devplanet.service.impl;
 
 import devplanet.dao.UserDao;
-import devplanet.model.Streak;
 import devplanet.model.User;
 import devplanet.oauth2.GithubUser;
 import devplanet.service.UserService;
@@ -51,7 +50,7 @@ public class UserServiceImpl implements UserService{
         if(user == null){
             user = new User(githubUser);
         }
-        user.setStreak(this.getStreakByGithub(githubUser.getLogin()));
+        this.setStreakByGithub(user);
         userDao.save(user);
         return user;
     }
@@ -67,8 +66,9 @@ public class UserServiceImpl implements UserService{
         }
     }
 
-    private Streak getStreakByGithub(String userName){
+    private void setStreakByGithub(User user){
         try{
+            String userName = user.getUserName();
             StringBuilder sb = new StringBuilder()
                     .append(GITHUB_URL)
                     .append(userName)
@@ -94,11 +94,10 @@ public class UserServiceImpl implements UserService{
                 lastCheckDate = new DateTime().minusDays(1);
             }
 
-            return new Streak(lastCheckDate, continuousStreak);
-
+            user.setCurrentStreak(continuousStreak);
+            user.setLastCheckDate(lastCheckDate);
         }catch (Exception e){
             logger.error("get streak exception", e);
-            return null;
         }
     }
 
