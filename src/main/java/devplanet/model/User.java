@@ -1,6 +1,7 @@
 package devplanet.model;
 
 import devplanet.oauth2.GithubUser;
+import org.joda.time.DateTime;
 
 import javax.persistence.*;
 import java.util.List;
@@ -22,33 +23,32 @@ public class User {
     @Column
     private String userName;
 
-    @Column(nullable = false)
-    private String email;
-
     @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="user")
     private List<Repository> repositories;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
-    private Streak streak;
+    @Column(name="last_check_date")
+    private DateTime lastCheckDate;
+
+    @Column(name="current_streak")
+    private int currentStreak;
+
+    @Column(name="point")
+    private int point;
 
     public User() {
-    }
-
-    public User(String userName, String email) {
-        this.userName = userName;
-        this.email = email;
-    }
-
-    public User(String userName, String email, List<Repository> repositories) {
-        this.userName = userName;
-        this.email = email;
-        this.repositories = repositories;
     }
 
     public User(GithubUser githubUser) {
         this.githubIdx = githubUser.getId();
         this.userName = githubUser.getLogin();
-        this.email = githubUser.getEmail();
+    }
+
+    public User(Integer githubIdx, String userName, DateTime lastCheckDate, int currentStreak, int point) {
+        this.githubIdx = githubIdx;
+        this.userName = userName;
+        this.lastCheckDate = lastCheckDate;
+        this.currentStreak = currentStreak;
+        this.point = point;
     }
 
     public Integer getIdx() {
@@ -75,14 +75,6 @@ public class User {
         this.userName = userName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public List<Repository> getRepositories() {
         return repositories;
     }
@@ -91,11 +83,27 @@ public class User {
         this.repositories = repositories;
     }
 
-    public Streak getStreak() {
-        return streak;
+    public DateTime getLastCheckDate() {
+        return lastCheckDate;
     }
 
-    public void setStreak(Streak streak) {
-        this.streak = streak;
+    public void setLastCheckDate(DateTime lastCheckDate) {
+        this.lastCheckDate = lastCheckDate;
+    }
+
+    public int getCurrentStreak() {
+        return currentStreak;
+    }
+
+    public void setCurrentStreak(int currentStreak) {
+        this.currentStreak = currentStreak;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
     }
 }

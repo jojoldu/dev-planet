@@ -3,7 +3,7 @@
 <head>
     <#include '/layout/header.ftl'>
     <!-- custom styles -->
-    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/custom.css" />
 
 </head>
 
@@ -31,17 +31,23 @@
                             <th>순위</th>
                             <th>사용자</th>
                             <th>Point</th>
-                            <th>현재 일일커밋</th>
+                            <th>현재 연속커밋</th>
+                            <th>최근 커밋일자</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr> <th scope="row">1</th> <td>Mark</td> <td>Otto</td> <td>@mdo</td> </tr>
-                        <tr> <th scope="row">2</th> <td>Jacob</td> <td>Thornton</td> <td>@fat</td> </tr>
-                        <tr> <th scope="row">3</th> <td>Larry the Bird</td> <td>@twitter</td> <td>@fat</td></tr>
+                        <#list userList as user>
+                            <tr>
+                                <th scope="row">${user_index+1}</th>
+                                <td>${user.userName}</td>
+                                <td>${user.point}</td>
+                                <td>${user.currentStreak}</td>
+                                <td>${user.lastCheckDate}</td>
+                            </tr>
+                        </#list>
                     </tbody>
                 </table>
             </div>
-
             <div class="well">
 
                 <div class="text-right">
@@ -103,7 +109,6 @@
 <!-- /.container -->
 
 <#include '/layout/footer.ftl'>
-<script type="text/javascript" src="/js/index/controller.js"></script>
-<script type="text/javascript" src="/js/index/directive.js"></script>
+
 </body>
 </html>
