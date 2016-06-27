@@ -23,7 +23,6 @@
         </div>
 
         <div class="col-md-9">
-
             <div class="thumbnail">
                 <table class="table table-striped table-responsive table-hover">
                     <thead>
@@ -48,8 +47,16 @@
                     </tbody>
                 </table>
             </div>
+            <div class="row">
+                <nav>
+                    <ul class="pagination pull-right">
+                        <li class="disabled"><a href="javascript:;" aria-label="Previous"><span aria-hidden="true">Previous</span></a></li>
+                        <li class="active"><a href="javascript:;">1 <span class="sr-only">(current)</span></a></li>
+                        <li class="disabled"><a href="javascript:;" aria-label="Next"><span aria-hidden="true">Next</span></a></li>
+                    </ul>
+                </nav>
+            </div>
             <div class="well">
-
                 <div class="text-right">
                     <a class="btn btn-success">Leave a Review</a>
                 </div>
