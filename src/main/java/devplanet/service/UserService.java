@@ -2,6 +2,8 @@ package devplanet.service;
 
 import devplanet.model.User;
 import devplanet.oauth2.GithubUser;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Map;
@@ -11,6 +13,7 @@ import java.util.Map;
  */
 public interface UserService {
     List<User> findAll();
+    Page<User> findAll(Pageable pageable);
     User login(GithubUser githubUser);
     List<Map<String, Object>> getRepository(String userName, String accessToken);
 }
