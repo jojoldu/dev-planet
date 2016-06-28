@@ -23,6 +23,16 @@
         </div>
 
         <div class="col-md-9">
+            <#if loginUser?has_content>
+                <h3 class="header blue lighter smaller">
+                    <i class="ace-icon fa fa-spinner"></i>
+                    Your Contribution
+                </h3>
+                <div id="progressbar" class="ui-progressbar ui-widget ui-widget-content ui-corner-all progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${loginUser.currentStreak}">
+                    <div class="ui-progressbar-value ui-widget-header ui-corner-left progress-bar progress-bar-success" style="width: ${loginUser.currentStreak}%;"></div>
+                </div>
+            </#if>
+
             <div class="thumbnail">
                 <table class="table table-striped table-responsive table-hover">
                     <thead>

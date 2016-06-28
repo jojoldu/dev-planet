@@ -4,6 +4,7 @@ import devplanet.model.User;
 import devplanet.oauth2.GithubUser;
 import devplanet.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import devplanet.util.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 
 /**
@@ -26,16 +28,17 @@ public class HomeController {
     private ObjectMapper objectMapper;
 
     @RequestMapping("/")
-    public String main(Model model){
+    public String main(Model model, HttpSession session){
         model.addAttribute("userList", userService.findAll());
+        model.addAttribute("loginUser", session.getAttribute(Constants.LOGIN_USER));
         return "index";
     }
 
     @RequestMapping("/login")
-    public String login(OAuth2Authentication auth){
+    public String login(OAuth2Authentication auth, HttpSession session){
         if(auth != null){
             GithubUser githubUser = objectMapper.convertValue(auth.getUserAuthentication().getDetails(), GithubUser.class);
-            userService.login(githubUser);
+            session.setAttribute(Constants.LOGIN_USER, userService.login(githubUser));
         }
 
         return "redirect:/";

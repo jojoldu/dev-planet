@@ -14,4 +14,6 @@ public interface Constants {
    String DOMAIN = "http://localhost:8080";
    String OAUTH_REDIRECT_URI = DOMAIN + "/login/oauth";
    String KEY_ACCESS_TOKEN = "access_token";
+
+   String LOGIN_USER = "loginUser";
 }
