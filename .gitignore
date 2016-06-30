@@ -8,3 +8,4 @@ gradle
 /classes
 /src/main/resources/static/components
 /src/main/resources/version.yml
+/node_modules
