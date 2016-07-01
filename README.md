@@ -8,20 +8,22 @@
 ----
 ## 목적
 > 일일커밋을 하는 사람들의 커뮤니티
-1. 현재 일일커밋 연속 횟수 공개
-2. 연속일일 커밋, 전체 커밋 등의 내용을 토대로 포인트 & 랭킹
+
+## 기능
+1. 현재 일일커밋 연속 횟수 공개<br/>
+2. 연속일일 커밋, 전체 커밋 등의 내용을 토대로 포인트 & 랭킹<br/>
 3. 일정시간 커밋 없을 경우 알람 (to do)
 
 ----
 ## 기술
 * Java 8
-* Spring Boot 1.3.3
+* Spring Boot 1.3.5
 * Spring Oauth2  
-* Embedded Redis (세션관리용)
+* Embedded Redis (세션관리용) -> 카우치베이스 예정
 * Gradle
 * JPA
 * Freemarker
 * H2 DB, Mysql
-* Angular -> React
-* Material Design -> Bootstrap (디자인은 걸렀다)
+* Angular -> React (진행중)
+* Material Design -> Bootstrap (디자인은 글렀다)
 
