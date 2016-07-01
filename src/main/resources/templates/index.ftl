@@ -23,6 +23,7 @@
         </div>
 
         <div class="col-md-9">
+            <div id="root"></div>
             <#if loginUser?has_content>
                 <h3 class="header blue lighter smaller">
                     <i class="ace-icon fa fa-spinner"></i>

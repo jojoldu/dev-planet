@@ -1,14 +1,13 @@
 /**
- * Created by jojoldu@zuminternet.com on 2016-06-30.
+ * Created by jojoldu@gmail.com on 2016-06-30.
  */
-const React = require('react');
-const client = require('./client');
 
-class App extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            users:[]
-        };
+import React from 'react';
+
+export default class Ranking extends React.Component {
+    render() {
+        return (
+            <h1> This is HOT! </h1>
+        )
     }
 }
