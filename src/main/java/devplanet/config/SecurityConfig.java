@@ -38,7 +38,7 @@ import org.springframework.web.filter.CompositeFilter;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.WebUtils;
 /**
- * Created by jojoldu@zuminternet.com on 2016-04-13.
+ * Created by jojoldu@gmail.com on 2016-04-13.
  */
 @Configuration
 @EnableOAuth2Client

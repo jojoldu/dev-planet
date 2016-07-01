@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Map;
 
 /**
- * Created by jojoldu@zuminternet.com on 2016-04-22.
+ * Created by jojoldu@gmail.com on 2016-04-22.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WebHook {

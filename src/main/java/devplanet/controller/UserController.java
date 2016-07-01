@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * Created by jojoldu@zuminternet.com on 2016-04-11.
+ * Created by jojoldu@gmail.com on 2016-04-11.
  */
 
 @RequestMapping("/user")

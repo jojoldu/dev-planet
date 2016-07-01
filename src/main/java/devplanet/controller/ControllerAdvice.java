@@ -1,7 +1,7 @@
 package devplanet.controller;
 
 /**
- * Created by jojoldu@zuminternet.com on 2016-05-31.
+ * Created by jojoldu@gmail.com on 2016-05-31.
  */
 import com.fasterxml.jackson.databind.ObjectMapper;
 import devplanet.model.User;

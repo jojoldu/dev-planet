@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Created by jojoldu@zuminternet.com on 2016-06-23.
+ * Created by jojoldu@gmail.com on 2016-06-23.
  */
 
 @SpringBootApplication(exclude = EmbeddedRedisConfiguration.class)

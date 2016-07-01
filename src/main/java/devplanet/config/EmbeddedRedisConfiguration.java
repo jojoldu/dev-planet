@@ -10,7 +10,7 @@ import javax.annotation.PreDestroy;
 import java.io.IOException;
 
 /**
- * Created by jojoldu@zuminternet.com on 2016-04-05.
+ * Created by jojoldu@gmail.com on 2016-04-05.
  */
 @Configuration
 @EnableRedisHttpSession

@@ -7,7 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import java.util.Collection;
 
 /**
- * Created by jojoldu@zuminternet.com on 2016-05-31.
+ * Created by jojoldu@gmail.com on 2016-05-31.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GithubUser {

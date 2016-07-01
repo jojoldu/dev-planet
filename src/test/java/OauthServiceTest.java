@@ -8,7 +8,7 @@ import redis.clients.jedis.Transaction;
 import static org.mockito.Mockito.*;
 
 /**
- * Created by jojoldu@zuminternet.com on 2016-04-12.
+ * Created by jojoldu@gmail.com on 2016-04-12.
  */
 
 @RunWith( MockitoJUnitRunner.class )

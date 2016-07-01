@@ -1,7 +1,7 @@
 package devplanet.pojo;
 
 /**
- * Created by jojoldu@zuminternet.com on 2016-04-26.
+ * Created by jojoldu@gmail.com on 2016-04-26.
  */
 public class SimpleAuthResponse {
     private String userName;

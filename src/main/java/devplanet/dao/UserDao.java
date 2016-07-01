@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * Created by jojoldu@zuminternet.com on 2016-04-01.
+ * Created by jojoldu@gmail.com on 2016-04-01.
  */
 
 @Repository
