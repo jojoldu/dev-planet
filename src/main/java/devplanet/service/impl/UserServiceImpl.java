@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService{
         }
     }
 
-    private void setStreakByGithub(User user){
+    public User setStreakByGithub(User user){
         try{
             String userName = user.getUserName();
             StringBuilder sb = new StringBuilder()
@@ -106,6 +106,8 @@ public class UserServiceImpl implements UserService{
         }catch (Exception e){
             logger.error("get streak exception", e);
         }
+
+        return user;
     }
 
 }
